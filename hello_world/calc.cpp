@@ -14,10 +14,12 @@ calc is using prefix notation, prefix stacking equations
             => not +11+2
 */
 
-int addition_on_numbers(stack<int> st, int op) {
+stack<int> addition_on_numbers(stack<int> st, int op) {
     if(op == 9999) {
-        printf("we see another addition");
-        return 0;
+        int new_op = st.top();
+        st.pop();
+        addition_on_numbers(st, new_op);
+        return ;
     }
     else {
         // numbers
@@ -42,6 +44,7 @@ void choice(stack<int> st, int op) {
 }
 
 int main() {
+    // making a stack from the stack library
     stack<int> st;
 
     // push the equation +11
